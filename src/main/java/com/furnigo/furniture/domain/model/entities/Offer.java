@@ -1,9 +1,9 @@
 package com.furnigo.furniture.domain.model.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Date;
+import java.util.Optional;
 
 @Entity
 public class Offer {
@@ -11,11 +11,15 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
-    private Long CarpentryId;
+    private Long OrderId;
+
+    private Long ExpertId;
 
     private Long UserId;
 
     private float Price;
 
     private String Description;
+
+    private Date LimitDate;
 }

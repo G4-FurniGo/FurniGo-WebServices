@@ -1,5 +1,7 @@
 package com.furnigo.furniture.domain.model.entities;
 
+import com.furnigo.furniture.domain.model.valueobjects.Resource;
+import com.furnigo.furniture.domain.model.valueobjects.UserRole;
 import com.furnigo.shared.domain.model.entities.AuditableModel;
 import jakarta.persistence.*;
 import com.furnigo.furniture.domain.model.valueobjects.Name;
@@ -10,6 +12,8 @@ public class User extends AuditableModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
+    private UserRole Role;
+
     @Embedded
     private Name Name;
 
@@ -17,7 +21,8 @@ public class User extends AuditableModel {
 
     private String Email;
 
-    private String Address;
+    @Embedded
+    private Resource ProfilePicture;
 
     private String Password;
 }

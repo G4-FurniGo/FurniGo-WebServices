@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
-public class Calification {
+public class Qualification {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;

@@ -1,8 +1,11 @@
 package com.furnigo.furniture.application.internal.queryservices;
 
 import com.furnigo.furniture.domain.model.entities.User;
+import com.furnigo.furniture.domain.model.queries.GetUserByEmailQuery;
 import com.furnigo.furniture.domain.model.queries.GetUserByIdQuery;
-import com.furnigo.shared.infrastructure.persistence.jpa.strategy.UserRepository;
+import com.furnigo.furniture.infrastructure.persistance.jpa.repositories.UserRepository;
+
+import java.util.Optional;
 
 public class UserQueryServiceImpl implements com.furnigo.furniture.domain.services.UserQueryService{
 
@@ -13,7 +16,12 @@ public class UserQueryServiceImpl implements com.furnigo.furniture.domain.servic
     }
 
     @Override
-    public User handle(GetUserByIdQuery query) {
-        return userRepository.findById(query.UserId()).orElse(null);
+    public Optional<User> handle(GetUserByIdQuery query) {
+        return Optional.ofNullable(userRepository.findById(query.UserId()).orElse(null));
+    }
+
+    @Override
+    public Optional<User> handle(GetUserByEmailQuery query) {
+        return userRepository.findByEmail(query.email());
     }
 }
