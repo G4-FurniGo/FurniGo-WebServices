@@ -8,7 +8,7 @@ import com.furnigo.furniture.domain.services.OrderCommandService;
 import com.furnigo.furniture.domain.services.OrderQueryService;
 
 @RestController
-@RequestMapping(value="/api/v1/orders", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value="/api/v1/order", produces = MediaType.APPLICATION_JSON_VALUE)
 public class OrderController {
     private final OrderCommandService orderCommandService;
     private final OrderQueryService orderQueryService;
@@ -18,16 +18,34 @@ public class OrderController {
         this.orderQueryService = orderQueryService;
     }
 
-    @GetMapping
+    @PutMapping("/edit")
     @Transactional
-    public String getOrders() {
-        return "Hello World";
+    public void editOrder(@RequestBody CreateOrderResource createOrderResource) {
+        orderCommandService.editOrder(createOrderResource);
+        // Confirm that the order is edited or why is not edited
+        // It must be temporal, not edit the actual resource yet
     }
 
-    @PostMapping
+    @PostMapping("/accept-changes")
     @Transactional
-    public String createOrder(@RequestBody CreateOrderResource resource) {
-        return "Hello World";
+    public void acceptChanges(@RequestBody CreateOrderResource createOrderResource) {
+        orderCommandService.acceptChanges(createOrderResource);
+        // Confirm that the order is accepted or why is not accepted
+        // Accept the temporal change
     }
 
+    @DeleteMapping("/cancel")
+    @Transactional
+    public void cancelOrder(@RequestBody CreateOrderResource createOrderResource) {
+        orderCommandService.cancelOrder(createOrderResource);
+        // Confirm that the order is canceled or why is not canceled
+        // Cancel the temporal change
+    }
+
+    @PutMapping("/update")
+    @Transactional
+    public void updateOrder(@RequestBody CreateOrderResource createOrderResource) {
+        orderCommandService.updateOrder(createOrderResource);
+        // Only the technician can update. Return if successfully updated
+    }
 }

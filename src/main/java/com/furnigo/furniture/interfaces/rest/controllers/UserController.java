@@ -1,4 +1,0 @@
-package com.furnigo.furniture.interfaces.rest.controllers;
-
-public class UserController {
-}
