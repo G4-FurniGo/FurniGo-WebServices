@@ -1,10 +1,5 @@
 package com.furnigo.furniture.application.internal.commandservices;
 
-import com.furnigo.furniture.domain.model.aggregates.Design;
-import com.furnigo.furniture.domain.model.aggregates.Order;
-import com.furnigo.furniture.domain.model.commands.AcceptDesignCommand;
-import com.furnigo.furniture.domain.model.commands.CreateDesignCommand;
-import com.furnigo.furniture.domain.model.commands.WithdrawDesignCommand;
 import com.furnigo.furniture.infrastructure.persistance.jpa.repositories.DesignRepository;
 import com.furnigo.furniture.infrastructure.persistance.jpa.repositories.OrderRepository;
 import com.furnigo.furniture.infrastructure.persistance.jpa.repositories.UserRepository;

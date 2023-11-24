@@ -1,7 +1,5 @@
 package com.furnigo.furniture.application.internal.queryservices;
 
-import com.furnigo.furniture.domain.model.aggregates.Design;
-import com.furnigo.furniture.domain.model.queries.GetDesignByIdQuery;
 import com.furnigo.furniture.infrastructure.persistance.jpa.repositories.DesignRepository;
 import org.springframework.stereotype.Service;
 

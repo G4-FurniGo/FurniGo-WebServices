@@ -1,8 +1,5 @@
 package com.furnigo.furniture.application.internal.queryservices;
 
-import com.furnigo.furniture.domain.model.aggregates.Order;
-import com.furnigo.furniture.domain.model.queries.GetOrderByIdQuery;
-import com.furnigo.furniture.domain.model.queries.GetOrdersByUserIdQuery;
 import com.furnigo.furniture.infrastructure.persistance.jpa.repositories.OrderRepository;
 import org.springframework.stereotype.Service;
 

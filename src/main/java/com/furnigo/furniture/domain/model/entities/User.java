@@ -13,15 +13,4 @@ public class User extends AuditableModel {
     private Long id;
 
     private UserRole role;
-
-    @Embedded
-    private Name name;
-
-    private String phone;
-
-    private String email;
-
-    private String pic;
-
-    private String password;
 }

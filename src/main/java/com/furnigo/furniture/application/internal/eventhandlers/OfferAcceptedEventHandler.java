@@ -1,7 +1,5 @@
 package com.furnigo.furniture.application.internal.eventhandlers;
 
-import com.furnigo.furniture.domain.model.commands.AcceptOfferCommand;
-import com.furnigo.furniture.domain.model.events.OfferAcceptedEvent;
 import com.furnigo.furniture.domain.services.*;
 import org.springframework.context.event.EventListener;
 

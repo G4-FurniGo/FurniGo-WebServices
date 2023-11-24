@@ -1,7 +1,5 @@
 package com.furnigo.furniture.application.internal.commandservices;
 
-import com.furnigo.furniture.domain.model.commands.CompleteOrderCommand;
-import com.furnigo.furniture.domain.model.commands.UpdateOrderStatusCommand;
 import com.furnigo.furniture.domain.model.valueobjects.OrderStatus;
 import com.furnigo.furniture.infrastructure.persistance.jpa.repositories.OrderRepository;
 import org.springframework.stereotype.Service;
