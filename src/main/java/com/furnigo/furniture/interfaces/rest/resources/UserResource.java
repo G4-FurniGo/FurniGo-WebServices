@@ -1,12 +1,12 @@
 package com.furnigo.furniture.interfaces.rest.resources;
 
-public record CreateNewUserResource(
-        String email,
-        String password,
+public record UserResource(
+        Long id,
         String name,
         String lastName,
+        String pic,
         String role,
-        String phone,
-        String pic
+        String email,
+        String phone
 ) {
 }

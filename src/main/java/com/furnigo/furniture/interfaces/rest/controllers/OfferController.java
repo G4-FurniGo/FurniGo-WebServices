@@ -4,11 +4,11 @@ import com.furnigo.furniture.domain.services.OfferCommandService;
 import com.furnigo.furniture.domain.services.OfferQueryService;
 import com.furnigo.furniture.domain.services.OrderCommandService;
 import com.furnigo.furniture.domain.services.OrderQueryService;
-import com.furnigo.furniture.interfaces.rest.resources.AcceptOfferResource;
-import com.furnigo.furniture.interfaces.rest.resources.CreateNewOfferResource;
-import com.furnigo.furniture.interfaces.rest.resources.DeleteOfferResource;
+import com.furnigo.furniture.interfaces.rest.resources.*;
 import jakarta.transaction.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/api/v1/offer", produces = "application/json")
@@ -25,26 +25,36 @@ public class OfferController {
         this.orderQueryService = orderQueryService;
     }
 
-    @PostMapping("/new")
+    @GetMapping("/allFromOrder/{orderId}")
     @Transactional
-    public void newOffer(@RequestBody CreateNewOfferResource resource)
+    public List<ExpertOfferResource> getAllOffersFromOrder(@PathVariable Long orderId)
     {
-        offerCommandService.newOffer(resource);
+        // Searches in the offer table for all offers with the given order id
+        // Gets the offers objects
+        // Gets the expert objects from the id in the offer objects
+        // Returns a list of ExpertOfferResource objects
+        throw new UnsupportedOperationException();
+
     }
 
-    @DeleteMapping("/remove")
+    @PutMapping("/{offerId}")
     @Transactional
-    public void deleteOffer(@RequestBody DeleteOfferResource resource)
+    public OrderResource acceptOffer(@PathVariable Long offerId)
     {
-        offerCommandService.deleteOffer(resource);
+        // Gets the data of the offer.
+        // Generates a new order with the data of the offer.
+        // Deletes the offer.
+        // Returns the order DTO
+        throw new UnsupportedOperationException();
     }
 
-    @PostMapping("/accept")
+    @PostMapping
     @Transactional
-    public void acceptOffer(@RequestBody AcceptOfferResource resource)
+    public void createOffer(@RequestBody CreateOfferResource createOfferResource)
     {
-        offerCommandService.acceptOffer(resource);
-        orderCommandService.createOrder(resource);
-        // return order object
+        // Creates a new offer with the given data
+        throw new UnsupportedOperationException();
     }
+
+
 }
