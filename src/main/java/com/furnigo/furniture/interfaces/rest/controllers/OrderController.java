@@ -11,14 +11,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value="/api/v1/order", produces = MediaType.APPLICATION_JSON_VALUE)
-public class OrderController {
+public class OrderController {/*
     private final OrderCommandService orderCommandService;
     private final OrderQueryService orderQueryService;
 
     public OrderController(OrderCommandService orderCommandService, OrderQueryService orderQueryService) {
         this.orderCommandService = orderCommandService;
         this.orderQueryService = orderQueryService;
-    }
+    }*/
 
     @GetMapping("/all/{userId}")
     @Transactional
@@ -86,6 +86,14 @@ public class OrderController {
         throw new UnsupportedOperationException();
     }
 
-
+    @GetMapping("/all/inline/{userId}")
+    @Transactional
+    public List<OrderResource> getAllOrdersInline(@PathVariable Long userId)
+    {
+        // Searches in the order table for all orders that do not have an offer of the given user id
+        // Searches in the order table for orders without an offer
+        // Returns a list of OrderResource objects
+        throw new UnsupportedOperationException();
+    }
 
 }

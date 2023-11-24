@@ -1,12 +1,12 @@
 package com.furnigo.furniture.application.internal.commandservices;
 
-import com.furnigo.furniture.application.internal.queryservices.OrderQueryServiceImpl;
 import com.furnigo.furniture.domain.model.commands.CompleteOrderCommand;
 import com.furnigo.furniture.domain.model.commands.UpdateOrderStatusCommand;
-import com.furnigo.furniture.domain.model.queries.GetOrderByIdQuery;
 import com.furnigo.furniture.domain.model.valueobjects.OrderStatus;
-import com.furnigo.shared.infrastructure.persistence.jpa.strategy.OrderRepository;
+import com.furnigo.furniture.infrastructure.persistance.jpa.repositories.OrderRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OrderCommandServiceImpl implements com.furnigo.furniture.domain.services.OrderCommandService{
 
     private final OrderRepository orderRepository;

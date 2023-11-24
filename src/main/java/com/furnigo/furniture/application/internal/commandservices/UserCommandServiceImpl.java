@@ -2,8 +2,10 @@ package com.furnigo.furniture.application.internal.commandservices;
 
 import com.furnigo.furniture.domain.model.commands.CreateUserCommand;
 import com.furnigo.furniture.domain.model.entities.User;
-import com.furnigo.shared.infrastructure.persistence.jpa.strategy.UserRepository;
+import com.furnigo.furniture.infrastructure.persistance.jpa.repositories.UserRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserCommandServiceImpl implements com.furnigo.furniture.domain.services.UserCommandService {
     private final UserRepository userRepository;
 

@@ -9,20 +9,19 @@ import com.furnigo.furniture.domain.model.valueobjects.Name;
 @Entity
 public class User extends AuditableModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private UserRole Role;
-
-    @Embedded
-    private Name Name;
-
-    private String PhoneNumber;
-
-    private String Email;
+    private UserRole role;
 
     @Embedded
-    private Resource ProfilePicture;
+    private Name name;
 
-    private String Password;
+    private String phone;
+
+    private String email;
+
+    private String pic;
+
+    private String password;
 }

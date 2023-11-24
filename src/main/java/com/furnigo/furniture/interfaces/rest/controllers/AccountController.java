@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value="/api/v1", produces = MediaType.APPLICATION_JSON_VALUE)
-public class AccountController {
+public class AccountController {/*
     private final UserCommandService userCommandService;
-    private final UserQueryService userQueryService;
-
+    private final UserQueryService userQueryService;*/
+/*
     public AccountController(UserCommandService userCommandService, UserQueryService userQueryService) {
         this.userCommandService = userCommandService;
         this.userQueryService = userQueryService;
-    }
+    }*/
 
     @GetMapping("/login")
     @Transactional

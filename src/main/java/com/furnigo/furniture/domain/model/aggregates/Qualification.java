@@ -1,6 +1,5 @@
 package com.furnigo.furniture.domain.model.aggregates;
 
-import com.furnigo.furniture.domain.model.entities.Carpentry;
 import com.furnigo.furniture.domain.model.entities.User;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +17,4 @@ public class Qualification {
     private int Score;
 
     private User Reviewer;
-
-    private Carpentry ReviewedCarpentry;
 }

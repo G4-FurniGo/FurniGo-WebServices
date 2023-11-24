@@ -3,11 +3,13 @@ package com.furnigo.furniture.application.internal.queryservices;
 import com.furnigo.furniture.domain.model.aggregates.Order;
 import com.furnigo.furniture.domain.model.queries.GetOrderByIdQuery;
 import com.furnigo.furniture.domain.model.queries.GetOrdersByUserIdQuery;
-import com.furnigo.shared.infrastructure.persistence.jpa.strategy.OrderRepository;
+import com.furnigo.furniture.infrastructure.persistance.jpa.repositories.OrderRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class OrderQueryServiceImpl implements com.furnigo.furniture.domain.services.OrderQueryService {
     private final OrderRepository orderRepository;
 

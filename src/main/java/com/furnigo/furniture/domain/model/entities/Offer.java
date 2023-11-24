@@ -8,7 +8,7 @@ import java.util.Optional;
 @Entity
 public class Offer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
     private Long OrderId;

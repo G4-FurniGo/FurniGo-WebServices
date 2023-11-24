@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value="/api/v1/offer", produces = "application/json")
-public class OfferController {
+public class OfferController {/*
     private final OfferCommandService offerCommandService;
     private final OfferQueryService offerQueryService;
     private final OrderQueryService orderQueryService;
@@ -23,7 +23,7 @@ public class OfferController {
         this.offerQueryService = offerQueryService;
         this.orderCommandService = orderCommandService;
         this.orderQueryService = orderQueryService;
-    }
+    }*/
 
     @GetMapping("/allFromOrder/{orderId}")
     @Transactional
