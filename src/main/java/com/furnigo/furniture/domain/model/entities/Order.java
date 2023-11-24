@@ -29,4 +29,17 @@ public class Order {
     private String details;
 
     private String objectUrl;
+
+    public Order() {
+    }
+
+    public Order(Long clientId, float estimatedPrice, OrderStatus status, String title, Date limitDate, String details, String objectUrl) {
+        this.clientId = clientId;
+        this.estimatedPrice = estimatedPrice;
+        this.status = status;
+        this.title = title;
+        this.limitDate = limitDate;
+        this.details = details;
+        this.objectUrl = objectUrl;
+    }
 }

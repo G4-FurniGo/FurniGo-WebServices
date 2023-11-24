@@ -20,7 +20,6 @@ public class OfferQueryServiceImpl implements OfferQueryService{
 
     @Override
     public List<Offer> getAllOffersFromOrder(Long orderId) {
-        // Get all offers from the database where order_Id matches the given orderId (argument)
         return offerRepository.findAllByOrderId(orderId);
     }
 

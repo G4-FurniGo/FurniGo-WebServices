@@ -4,7 +4,6 @@ public record CreateOfferResource(
         Long orderId,
         Long expertId,
         float price,
-        String date,
-        boolean accepted //Default value is false
+        String date
 ) {
 }

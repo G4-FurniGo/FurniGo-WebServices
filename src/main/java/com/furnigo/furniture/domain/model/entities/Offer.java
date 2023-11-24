@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.Date;
-import java.util.Optional;
 
 @Entity
 @Getter
@@ -22,4 +21,15 @@ public class Offer {
     private boolean isAccepted;
 
     private Date limitDate;
+
+    public Offer() {
+    }
+
+    public Offer(Long orderId, Long expertId, float price, boolean isAccepted, Date limitDate) {
+        this.orderId = orderId;
+        this.expertId = expertId;
+        this.price = price;
+        this.isAccepted = isAccepted;
+        this.limitDate = limitDate;
+    }
 }
