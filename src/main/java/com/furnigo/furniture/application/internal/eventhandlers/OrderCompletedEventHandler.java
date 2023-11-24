@@ -9,10 +9,4 @@ public class OrderCompletedEventHandler {
     public OrderCompletedEventHandler(OrderCommandService orderCommandService) {
         this.orderCommandService = orderCommandService;
     }
-
-    @EventListener(OrderCompletedEvent.class)
-    public void on(OrderCompletedEvent event) {
-        orderCommandService.handle(new CompleteOrderCommand(event.OrderId()));
-
-    }
 }

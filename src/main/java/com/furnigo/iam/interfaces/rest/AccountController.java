@@ -1,7 +1,6 @@
 package com.furnigo.iam.interfaces.rest;
 
 import com.furnigo.iam.domain.services.UserCommandService;
-import com.furnigo.iam.domain.services.UserQueryService;
 import com.furnigo.iam.interfaces.rest.resources.CreateNewUserResource;
 import com.furnigo.iam.interfaces.rest.resources.LoggedInUserResource;
 import com.furnigo.iam.interfaces.rest.resources.LoginResource;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import com.furnigo.iam.interfaces.rest.transform.LoggedInUserResourceFromEntityPairAssembler;
 
 @RestController
-@RequestMapping(value="/api/v1", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value="/api/v1/auth", produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name="Authentication", description = "Authentication Endpoints")
 public class AccountController {
     private final UserCommandService userCommandService;
@@ -62,12 +61,19 @@ public class AccountController {
         // Convert the CreateNewUserResource to a SignUpCommand
         var signUpCommand = SignUpCommandFromResourceAssembler.toCommandFromResource(resource);
 
+        // Handle the sign-up command and get the authenticated user
+        var authenticatedUser = userCommandService.handle(signUpCommand);
 
+        // If there is an error, return a 400 Bad Request response.
+        if (authenticatedUser.isEmpty()) {
+            return ResponseEntity.badRequest().build();
+        }
 
-        // Check if the email is already registered
-        // If not, create the user
-        // Generate JWT token and bundle it with the user resource
-        // Return LoggedInUserResource
-        throw new UnsupportedOperationException();
+        // Convert the authenticated user to a LoggedInUserResource
+        var loggedInUserResource = LoggedInUserResourceFromEntityPairAssembler
+                .toResourceFromEntity(authenticatedUser.get().getLeft(), authenticatedUser.get().getRight());
+
+        // Return the LoggedInUserResource with a 200 OK response
+        return ResponseEntity.ok(loggedInUserResource);
     }
 }
