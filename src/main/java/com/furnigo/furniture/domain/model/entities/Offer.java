@@ -11,17 +11,15 @@ import java.util.Optional;
 public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    private Long OrderId;
+    private Long orderId;
 
-    private Long ExpertId;
+    private Long expertId;
 
-    private Long UserId;
+    private float price;
 
-    private float Price;
+    private boolean isAccepted;
 
-    private String Description;
-
-    private Date LimitDate;
+    private Date limitDate;
 }
