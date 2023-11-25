@@ -23,7 +23,7 @@ public class DesignController {
         this.designQueryService = designQueryService;
     }
 
-    @GetMapping("/{orderId}")
+    @GetMapping(value = "/{orderId}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     @Transactional
     public ResponseEntity<byte[]> download(@PathVariable Long orderId){
         Design findedDesign = designQueryService.getDesignFromOrder(orderId)
@@ -31,10 +31,6 @@ public class DesignController {
 
         byte[] data = findedDesign.getObjFile();
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        headers.setContentDispositionFormData("attachment", findedDesign.getObjName());
-
-        return new ResponseEntity<>(data, headers, HttpStatus.OK);
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 }

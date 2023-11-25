@@ -95,6 +95,8 @@ public class OrderCommandServiceImpl implements OrderCommandService {
             command.objFile()
         );
 
-        return designRepository.save(design);
+        var savedDesign = designRepository.save(design);
+
+        return savedDesign;
     }
 }

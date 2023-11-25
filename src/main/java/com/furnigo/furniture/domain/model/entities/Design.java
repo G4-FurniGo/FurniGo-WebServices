@@ -21,7 +21,7 @@ public class Design {
     private String objName;
 
     @Lob
-    @Column(name = "objFile")
+    @Column(name = "objFile", length = 1000000)
     private byte[] objFile;
 
     private Long orderId;
