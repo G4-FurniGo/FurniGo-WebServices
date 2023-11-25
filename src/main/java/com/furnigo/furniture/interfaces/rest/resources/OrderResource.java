@@ -7,7 +7,6 @@ public record OrderResource(
         String state,
         String title,
         String limit,
-        String details,
-        String objPath
+        String details
 ) {
 }
