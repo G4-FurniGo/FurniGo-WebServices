@@ -54,7 +54,7 @@ public class OrderCommandServiceImpl implements OrderCommandService {
             command.title(),
             command.limitDate(),
             command.details(),
-            command.objectUrl()
+            command.modelId()
         );
         return orderRepository.save(order);
     }

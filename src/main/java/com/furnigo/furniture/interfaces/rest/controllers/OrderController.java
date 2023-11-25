@@ -173,7 +173,7 @@ public class OrderController {
             createOrderResource.estimate(),
             createOrderResource.title(), limitDate,
             createOrderResource.details(),
-            createOrderResource.objPath()
+            createOrderResource.modelId()
         );
 
         var order = orderCommandService.handle(createOrderCommand);

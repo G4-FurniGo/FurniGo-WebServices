@@ -7,6 +7,6 @@ public record CreateOrderResource(
         String details,
         Long clientId,
         String state,
-        String objPath
+        Long modelId
 ) {
 }

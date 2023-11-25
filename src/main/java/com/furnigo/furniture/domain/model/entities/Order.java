@@ -29,19 +29,19 @@ public class Order {
     @Setter
     private String details;
 
-    private String objectUrl;
+    private Long modelId;
 
     public Order() {
     }
 
-    public Order(Long clientId, float estimatedPrice, OrderStatus status, String title, Date limitDate, String details, String objectUrl) {
+    public Order(Long clientId, float estimatedPrice, OrderStatus status, String title, Date limitDate, String details, Long modelId) {
         this.clientId = clientId;
         this.estimatedPrice = estimatedPrice;
         this.status = status;
         this.title = title;
         this.limitDate = limitDate;
         this.details = details;
-        this.objectUrl = objectUrl;
+        this.modelId = modelId;
     }
 
     public void updateStatus(OrderStatus status) {

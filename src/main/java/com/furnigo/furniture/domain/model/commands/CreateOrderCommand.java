@@ -8,6 +8,6 @@ public record CreateOrderCommand(
         String title,
         Date limitDate,
         String details,
-        String objectUrl
+        Long modelId
 ) {
 }

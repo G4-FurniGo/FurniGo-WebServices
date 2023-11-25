@@ -8,6 +8,6 @@ public record OrderResource(
         String title,
         String limit,
         String details,
-        String objPath
+        Long modelId
 ) {
 }

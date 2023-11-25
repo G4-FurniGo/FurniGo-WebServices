@@ -14,7 +14,7 @@ public class OrderResourceFromEntity {
                 newOrder.getTitle(),
                 newOrder.getLimitDate().toString(),
                 newOrder.getDetails(),
-                newOrder.getObjectUrl()
+                newOrder.getModelId()
         );
     }
 }
