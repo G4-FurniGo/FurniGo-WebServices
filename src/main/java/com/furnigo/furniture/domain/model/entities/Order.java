@@ -29,28 +29,21 @@ public class Order {
     @Setter
     private String details;
 
-    private String objectUrl;
-
     public Order() {
     }
 
-    public Order(Long clientId, float estimatedPrice, OrderStatus status, String title, Date limitDate, String details, String objectUrl) {
+    public Order(Long clientId, float estimatedPrice, OrderStatus status, String title, Date limitDate, String details) {
         this.clientId = clientId;
         this.estimatedPrice = estimatedPrice;
         this.status = status;
         this.title = title;
         this.limitDate = limitDate;
         this.details = details;
-        this.objectUrl = objectUrl;
     }
 
     public void updateStatus(OrderStatus status) {
         if (this.status == OrderStatus.DONE && status == OrderStatus.CANCELLED) {
             throw new IllegalArgumentException("Cannot cancel a done order");
-        }
-
-        if(this.status.getValue() > status.getValue()) {
-            throw new IllegalArgumentException("Cannot update status to a previous one");
         }
 
         this.status = status;

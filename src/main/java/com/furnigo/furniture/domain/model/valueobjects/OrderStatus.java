@@ -4,15 +4,15 @@ import lombok.Getter;
 
 @Getter
 public enum OrderStatus {
-    INLINE(100),
-    BUILDING(200),
-    FINISHED(300),
-    CANCELLED(400),
-    DONE(500);
+    INLINE("inline"),
+    BUILDING("building"),
+    FINISHED("waiting"),
+    CANCELLED("cancelled"),
+    DONE("done");
 
-    private final int value;
+    private final String value;
 
-    OrderStatus(int value) {
+    OrderStatus(String value) {
         this.value = value;
     }
 

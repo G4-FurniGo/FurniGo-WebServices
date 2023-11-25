@@ -6,7 +6,6 @@ public record CreateOrderResource(
         String limit,
         String details,
         Long clientId,
-        String state,
-        String objPath
+        String state
 ) {
 }

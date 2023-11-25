@@ -7,7 +7,6 @@ public record CreateOrderCommand(
         float estimatedPrice,
         String title,
         Date limitDate,
-        String details,
-        String objectUrl
+        String details
 ) {
 }

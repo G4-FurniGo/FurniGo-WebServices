@@ -10,11 +10,10 @@ public class OrderResourceFromEntity {
                 newOrder.getId(),
                 newOrder.getClientId(),
                 newOrder.getEstimatedPrice(),
-                newOrder.getStatus().toString(),
+                newOrder.getStatus().getValue(),
                 newOrder.getTitle(),
                 newOrder.getLimitDate().toString(),
-                newOrder.getDetails(),
-                newOrder.getObjectUrl()
+                newOrder.getDetails()
         );
     }
 }

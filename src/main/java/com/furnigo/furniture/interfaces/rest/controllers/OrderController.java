@@ -1,6 +1,8 @@
 package com.furnigo.furniture.interfaces.rest.controllers;
+import com.furnigo.furniture.domain.model.commands.AddDesignToOrderCommand;
 import com.furnigo.furniture.domain.model.commands.CreateOrderCommand;
 import com.furnigo.furniture.domain.model.commands.UpdateOrderCommand;
+import com.furnigo.furniture.domain.model.entities.Design;
 import com.furnigo.furniture.domain.model.entities.Offer;
 import com.furnigo.furniture.domain.model.entities.Order;
 import com.furnigo.furniture.domain.model.queries.GetOrderByIdQuery;
@@ -19,9 +21,12 @@ import jakarta.transaction.Transactional;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.furnigo.furniture.domain.services.OrderCommandService;
 import com.furnigo.furniture.domain.services.OrderQueryService;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +34,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import javax.print.attribute.standard.Media;
 
 @RestController
 @RequestMapping(value="/api/v1/order", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -158,7 +165,7 @@ public class OrderController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<OrderResource> createOrder(@RequestBody CreateOrderResource createOrderResource)
+    public ResponseEntity<OrderResource> createOrder(@RequestBody CreateOrderResource createOrderResource) throws IOException
     {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         Date limitDate;
@@ -172,8 +179,7 @@ public class OrderController {
             createOrderResource.clientId(),
             createOrderResource.estimate(),
             createOrderResource.title(), limitDate,
-            createOrderResource.details(),
-            createOrderResource.objPath()
+            createOrderResource.details()
         );
 
         var order = orderCommandService.handle(createOrderCommand);
@@ -208,5 +214,16 @@ public class OrderController {
             .collect(Collectors.toList()));
 
     }
+
+    @PostMapping(value = "/appendDesign/{orderId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Design> appendDesign(@PathVariable("orderId") Long orderId, @RequestParam("file") MultipartFile file) throws IOException{
+        var design = orderCommandService.handle(new AddDesignToOrderCommand(
+            orderId,
+            file.getOriginalFilename(),
+            file.getBytes()
+        ));
+
+        return ResponseEntity.ok(design);
+    } 
 
 }

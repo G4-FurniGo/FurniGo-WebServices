@@ -12,15 +12,18 @@ public class FurnigoApplication {
     public static void main(String[] args) {
         SpringApplication.run(FurnigoApplication.class, args);
     }
+
     @Bean
-    public WebMvcConfigurer corsConfigurer(){
+    public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("*")
-                        .allowedMethods("*");
-            }
+                registry.addMapping("/api/v1/**")
+                        .allowedOrigins("http://localhost:4200") // Reemplaza con el origen de tu aplicación Angular
+                        .allowedMethods("*")
+                        .allowedHeaders("Authorization", "Content-Type")
+                        .allowCredentials(true);
+            };
         };
     }
 }

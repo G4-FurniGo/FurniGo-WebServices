@@ -40,12 +40,15 @@ public class BearerAuthorizationRequestFilter extends OncePerRequestFilter {
                 var userDetails = userDetailsService.loadUserByUsername(username);
                 SecurityContextHolder.getContext().
                         setAuthentication(UsernamePasswordAuthenticationTokenBuilder.build(userDetails, request));
+
             } else  {
                 LOGGER.info("Token is not valid");
             }
         } catch (Exception e) {
             LOGGER.error("Cannot set user authentication: {}", e.getMessage());
         }
+        System.out.println("entro");
         filterChain.doFilter(request, response);
+        System.out.println("salio");
     }
 }
