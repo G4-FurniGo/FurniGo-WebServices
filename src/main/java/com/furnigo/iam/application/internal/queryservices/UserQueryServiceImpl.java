@@ -3,6 +3,7 @@ package com.furnigo.iam.application.internal.queryservices;
 import com.furnigo.iam.domain.model.entities.User;
 import com.furnigo.iam.domain.model.queries.GetAllClientsQuery;
 import com.furnigo.iam.domain.model.queries.GetAllExpertsQuery;
+import com.furnigo.iam.domain.model.queries.GetUserRoleByIdQuery;
 import com.furnigo.iam.domain.model.valueobjects.UserRole;
 import com.furnigo.iam.domain.services.UserQueryService;
 import com.furnigo.iam.infrastructure.persistence.jpa.repositories.UserRepository;
@@ -27,5 +28,10 @@ public class UserQueryServiceImpl implements UserQueryService{
     @Override
     public List<User> handle(GetAllExpertsQuery query) {
         return userRepository.findAllByRole(UserRole.EXPERT);
+    }
+
+    @Override
+    public UserRole handle(GetUserRoleByIdQuery query) {
+        return userRepository.findById(query.userId()).map(User::getRole).orElse(null);
     }
 }

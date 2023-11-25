@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
@@ -17,15 +18,15 @@ public class Order {
     private Long id;
 
     private Long clientId;
-
+    @Setter
     private float estimatedPrice;
 
     private OrderStatus status;
-
+    @Setter
     private String title;
-
+    @Setter
     private Date limitDate;
-
+    @Setter
     private String details;
 
     private String objectUrl;
@@ -41,5 +42,17 @@ public class Order {
         this.limitDate = limitDate;
         this.details = details;
         this.objectUrl = objectUrl;
+    }
+
+    public void updateStatus(OrderStatus status) {
+        if (this.status == OrderStatus.DONE && status == OrderStatus.CANCELLED) {
+            throw new IllegalArgumentException("Cannot cancel a done order");
+        }
+
+        if(this.status.getValue() > status.getValue()) {
+            throw new IllegalArgumentException("Cannot update status to a previous one");
+        }
+
+        this.status = status;
     }
 }

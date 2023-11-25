@@ -27,4 +27,14 @@ public class OfferQueryServiceImpl implements OfferQueryService{
     public Optional<Offer> handle(GetOfferByIdQuery query) {
     return offerRepository.findById(query.offerId());
     }
+
+    @Override
+    public List<Offer> getAllOffersByExpertId(Long expertId) {
+        return offerRepository.findAllByExpertId(expertId);
+    }
+
+    @Override
+    public List<Offer> getAllOffers() {
+        return offerRepository.findAll();
+    }
 }
